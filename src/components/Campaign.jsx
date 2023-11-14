@@ -49,7 +49,7 @@ const Campaign = ({campaignsList, filteredCampaignsList,  updateCampaignsList, h
         </button>
       </div>
 
-      {campaignsList?.length > 0 ? (<div className="h-full bg-white flex flex-col gap-6 py-7 px-8 border-[1.5px] border-[#E9E9E9] rounded-[10px]">
+      {campaignsList?.length > 0 ? (<div className="h-screen overflow-auto custom-scrollbar bg-white flex flex-col gap-6 py-7 px-8 border-[1.5px] border-[#E9E9E9] rounded-[10px]">
         <CampaignFilter handleFilterChange = {handleFilterChange} inputData = {inputData} handleInputChange = {handleInputChange} />
 
         {(campaignsList?.length > 0 && filteredCampaignsList?.length > 0) ? <CampaignsList filteredCampaignsList = {filteredCampaignsList} handleChangeStatus = {handleChangeStatus} updateCampaignsList = {updateCampaignsList} /> : <div className="flex-1 text-3xl font-bold flex-center">No results found for the applied filters. Try adjusting your criteria.</div>}

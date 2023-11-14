@@ -3,10 +3,11 @@ import { useState } from "react";
 
 import "./globals.css";
 import { LeftSidebar, Navbar, Campaign, CreateCampaign } from "./components";
+import { staticData } from "./constants";
 
 function App() {
   const [activeTab, setActiveTab] = useState("Campaign");
-  const [campaignsList, setCampaignsList] = useState([]);
+  const [campaignsList, setCampaignsList] = useState(staticData);
   const [filterCampaigns, setFilterCampaigns] = useState({
     platform: "All Platform",
     status: "All Status",

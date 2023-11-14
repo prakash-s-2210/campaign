@@ -1,5 +1,11 @@
 import { useState, useEffect, useRef } from "react";
-const CampaignCard = ({ campaign, handleChangeStatus, index, filteredCampaignsList, updateCampaignsList }) => {
+const CampaignCard = ({
+  campaign,
+  handleChangeStatus,
+  index,
+  filteredCampaignsList,
+  updateCampaignsList,
+}) => {
   const [onOff, setOnOff] = useState(campaign.status === "Live now");
   const [openModal, setOpenModal] = useState(false);
   const modalRef = useRef(null);
@@ -23,40 +29,71 @@ const CampaignCard = ({ campaign, handleChangeStatus, index, filteredCampaignsLi
     return `${day} ${monthAbbreviation} ${year}`;
   };
 
+  const formatCreatedDate = (date) => {
+    const parsedDate = new Date(date);
+    return`${parsedDate.getDate()} ${parsedDate.toLocaleString(
+      "default",
+      { month: "short" }
+    )}`;
+  };
+
   useEffect(() => {
-    console.log(modalRef.current)
+    console.log(modalRef.current);
     let handler = (e) => {
-      console.log(modalRef.current, e.target)
-        if(modalRef.current && !modalRef.current.contains(e.target)){
-            setOpenModal(false);
-        }
-    }
+      console.log(modalRef.current, e.target);
+      if (modalRef.current && !modalRef.current.contains(e.target)) {
+        setOpenModal(false);
+      }
+    };
     document.addEventListener("mousedown", handler);
     return () => {
-        document.removeEventListener("mousedown", handler);
-    }
+      document.removeEventListener("mousedown", handler);
+    };
   }, []);
 
   return (
     <>
-      {openModal && <div className="flex-center fixed left-0 top-0 h-screen w-screen bg-black bg-opacity-40 z-50">
-        <div ref={modalRef} className="flex flex-col  gap-8 w-fit p-10 bg-white flex-center rounded-lg">
-          <p className="text-xl font-semibold">Are you sure, you want to delete?</p>
+      {openModal && (
+        <div className="flex-center fixed left-0 top-0 h-screen w-screen bg-black bg-opacity-40 z-50">
+          <div
+            ref={modalRef}
+            className="flex flex-col  gap-8 w-fit p-10 bg-white flex-center rounded-lg"
+          >
+            <p className="text-xl font-semibold">
+              Are you sure, you want to delete?
+            </p>
 
-          <div className="w-full flex justify-end gap-3">
-            <button type="button" className="py-2 px-4 rounded-lg font-bold text-sm bg-gray-300" onClick={() => setOpenModal(false)}>Cancel</button>
+            <div className="w-full flex justify-end gap-3">
+              <button
+                type="button"
+                className="py-2 px-4 rounded-lg font-bold text-sm bg-gray-300"
+                onClick={() => setOpenModal(false)}
+              >
+                Cancel
+              </button>
 
-            <button type="button" className="py-2 px-4 text-white rounded-lg font-bold text-sm bg-red-600" onClick={() => {
-              const updatedCampaignsList = filteredCampaignsList.filter((item) => item.id !== campaign.id);
-              updateCampaignsList(updatedCampaignsList);
-            }}>Delete</button>
+              <button
+                type="button"
+                className="py-2 px-4 text-white rounded-lg font-bold text-sm bg-red-600"
+                onClick={() => {
+                  const updatedCampaignsList = filteredCampaignsList.filter(
+                    (item) => item.id !== campaign.id
+                  );
+                  updateCampaignsList(updatedCampaignsList);
+                }}
+              >
+                Delete
+              </button>
+            </div>
           </div>
         </div>
-      </div>}
+      )}
       <tr
         key={campaign.productName}
         className={`${
-          filteredCampaignsList.length - 1 === index ? "border-b-0" : "border-b border-b-[#EAEAEA]"
+          filteredCampaignsList.length - 1 === index
+            ? "border-b-0"
+            : "border-b border-b-[#EAEAEA]"
         } `}
       >
         <td className="pl-6 py-4">
@@ -85,7 +122,7 @@ const CampaignCard = ({ campaign, handleChangeStatus, index, filteredCampaignsLi
             <p className="text-sm font-medium">{campaign.productName}</p>
 
             <p className="text-xs opacity-60">
-              created on {campaign.dateCreated}
+              created on {formatCreatedDate(campaign.dateCreated)}
             </p>
           </div>
         </td>
@@ -122,7 +159,12 @@ const CampaignCard = ({ campaign, handleChangeStatus, index, filteredCampaignsLi
           <div className="flex gap-[18px]">
             <img src="/assets/icons/pen.svg" alt="Pen" className="my-auto" />
 
-            <img src="/assets/icons/trash.svg" alt="Trash" className="cursor-pointer" onClick={() => setOpenModal(true)} />
+            <img
+              src="/assets/icons/trash.svg"
+              alt="Trash"
+              className="cursor-pointer"
+              onClick={() => setOpenModal(true)}
+            />
           </div>
         </td>
       </tr>

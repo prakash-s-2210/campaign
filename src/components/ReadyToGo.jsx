@@ -102,9 +102,7 @@ const ReadyToGo = ({ addCampaign, campaignDetails, onNextStepClick }) => {
             const formattedMonth = String(month).padStart(2, '0');
           
             // Format the date string as "DD-MM-YYYY"
-            const formattedDate = `${formattedDay}-${formattedMonth}-${year}`;
-          
-            return formattedDate;
+            return `${formattedMonth}-${formattedDay}-${year}`;
           }
 
           addCampaign({
