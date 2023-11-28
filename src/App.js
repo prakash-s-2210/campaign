@@ -59,7 +59,6 @@ function App() {
     const [day, month, year] = campaign.dateCreated.split('-');
     const dateObject = new Date(`${year}-${month}-${day}`);
 
-
     switch (filter) {
       case "Last 30 days":
         return currentDate - dateObject <= 30 * 24 * 60 * 60 * 1000;
@@ -86,9 +85,10 @@ function App() {
 
   //filtered Campaigns list
   const filteredCampaignsList = campaignsList.filter((item) => {
-    return (getSearchedCampaign(item) && (platformMatch(item, filterCampaigns.platform) || statusMatch(item, filterCampaigns.status) || dateRangeMatch(item, filterCampaigns.dateRange))) ;
+    console.log(item.dateCreated)
+    return (getSearchedCampaign(item) && (platformMatch(item, filterCampaigns.platform) && statusMatch(item, filterCampaigns.status) && dateRangeMatch(item, filterCampaigns.dateRange))) ;
   });
-
+  
   return (
     <main className="flex">
       <LeftSidebar activeTab={activeTab} handleTabChange={handleTabChange} />

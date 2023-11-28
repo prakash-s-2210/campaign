@@ -89,7 +89,7 @@ const ReadyToGo = ({ addCampaign, campaignDetails, onNextStepClick }) => {
       </div>
 
       <div
-        className="w-fit ml-auto flex justify-end"
+        className="ml-auto"
         onClick={() => {
           if (!selectedPreview) return;
           const copiedData = { ...campaignDetails };
@@ -102,7 +102,7 @@ const ReadyToGo = ({ addCampaign, campaignDetails, onNextStepClick }) => {
             const formattedMonth = String(month).padStart(2, '0');
           
             // Format the date string as "DD-MM-YYYY"
-            return `${formattedMonth}-${formattedDay}-${year}`;
+            return `${formattedDay}-${formattedMonth}-${year}`;
           }
 
           addCampaign({

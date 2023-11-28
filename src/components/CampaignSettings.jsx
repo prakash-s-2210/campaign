@@ -26,6 +26,14 @@ const CampaignSettings = ({
     location: "",
   });
 
+  const getCurrentDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0"); // Months are zero-based
+    const day = String(today.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
   return (
     <div className="flex flex-col gap-6 max-w-[900px]">
       <div className="px-8 pt-5 pb-12 flex flex-col gap-6 border border-[#DAE6FF] rounded-[10px] bg-white">
@@ -37,7 +45,7 @@ const CampaignSettings = ({
         <div className="flex flex-col">
           <div>
             <div>
-              <span className="py-0.5 px-1.5 no-underline rounded-full bg-[#0F6EFF] subtle-bold text-white">
+              <span className="py-0.5 px-1.5 rounded-full bg-[#0F6EFF] subtle-bold text-white">
                 1
               </span>
               <span className="ml-2 subtle-medium underline">
@@ -80,6 +88,7 @@ const CampaignSettings = ({
                     <input
                       type="date"
                       value={inputData.startDate}
+                      min={getCurrentDate()}
                       onChange={(e) => {
                         if (
                           inputData.endDate &&
@@ -107,6 +116,7 @@ const CampaignSettings = ({
                     <input
                       type="date"
                       value={inputData.endDate}
+                      min={getCurrentDate()}
                       onChange={(e) => {
                         if (
                           inputData.startDate &&
@@ -267,25 +277,9 @@ const CampaignSettings = ({
                 </div>
               ) : (
                 <div className="flex flex-col gap-2 pb-8">
-                  <div className="flex justify-between">
-                    <div className="subtle-medium text-[#606060]">
-                      Select target radius
-                    </div>
-
-                    <div className="flex items-center gap-1">
-                      <img
-                        src="/assets/icons/india.svg"
-                        alt="India flag symbol"
-                      />
-
-                      <p>INR</p>
-
-                      <img
-                        src="/assets/icons/arrow-down.svg"
-                        alt="arrow down"
-                      />
-                    </div>
-                  </div>
+                  <p className="subtle-medium text-[#606060]">
+                    Select target radius
+                  </p>
 
                   <div className=" relative">
                     <input
@@ -357,7 +351,7 @@ const CampaignSettings = ({
         </div>
       </div>
       <div
-        className="w-fit ml-auto flex justify-end absolute right-[50px] bottom-12"
+        className="ml-auto absolute right-[50px] bottom-12"
         onClick={() => {
           if (!inputData.startDate || !inputData.endDate || !inputData.location)
             return;

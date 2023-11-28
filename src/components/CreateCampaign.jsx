@@ -62,12 +62,12 @@ const CreateCampaign = ({addCampaign}) => {
         </p>
       </div>
 
-      <div className="relative flex justify-between">
+      <div className="relative flex">
         {steps.map((step, i) => (
-          <div className={`step-item relative flex flex-col flex-center w-full  ${i+1 <= currentStep && "active"} ${progress[i] === 0 && "pending"} ${progress[i] === 60 && "progress"} ${progress[i] === 100 && "completed"}`}>
+          <div key={step.label} className={`step-item relative flex-center flex-col w-full  ${i+1 <= currentStep && "active"} ${progress[i] === 0 && "pending"} ${progress[i] === 60 && "progress"} ${progress[i] === 100 && "completed"}`}>
             <div className="step bg-[#E4EAF2] w-16 h-16 rounded-full z-40"><img src={step.icon} alt={step.alt} className={`inline-block p-5 flex-center z-10 relative rounded-full  ${i + 1 <= currentStep && "invert-white"}`} /></div>
 
-            <p className="">{step.label}</p>
+            <p>{step.label}</p>
           </div>
         ))}
       </div>

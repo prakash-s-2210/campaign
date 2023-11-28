@@ -77,7 +77,7 @@ const ChooseProduct = ({
       </div>
 
       <div
-        className="w-fit ml-auto flex justify-end"
+        className="ml-auto"
         onClick={() => {
           if (
             !selectedProduct.productImg ||

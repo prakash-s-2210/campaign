@@ -70,7 +70,7 @@ const CampaignTypes = ({
       </div>
 
       <div
-        className="w-fit ml-auto flex justify-end"
+        className="ml-auto"
         onClick={() => {
           if (!selectedPlatform.platform) return;
           const copiedData = { ...campaignDetails };
