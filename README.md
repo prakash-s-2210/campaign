@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Screenshots
 
+![What you want to do](https://github.com/prakash-s-2210/campaign/assets/94909544/143385a4-2727-4cea-a800-efe4a74e43cf)
+
 ![Choose product](https://github.com/prakash-s-2210/campaign/assets/94909544/37138cb5-465c-48f4-8fbb-04f803dd548b)
 
 ![Cmapign settings](https://github.com/prakash-s-2210/campaign/assets/94909544/2a6342e2-ea97-4b07-8564-8aa9670515e0)
@@ -11,9 +13,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ![Dashboard](https://github.com/prakash-s-2210/campaign/assets/94909544/bc3a9e58-e868-47e9-8f95-3fa870de833f)
 
 ![Ready to go](https://github.com/prakash-s-2210/campaign/assets/94909544/817239b2-d25a-4a67-8704-1ed4c64e3eaf)
-
-![What you want to do](https://github.com/prakash-s-2210/campaign/assets/94909544/143385a4-2727-4cea-a800-efe4a74e43cf)
-
 
 In the project directory, you can run:
 
