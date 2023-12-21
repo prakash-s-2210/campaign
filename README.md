@@ -18,7 +18,7 @@ Welcome to Ad Manager, a cutting-edge platform designed for business owners to e
 
 - Frontend: React.js
 
-## Features
+## Features:
 
 ### Dynamic Dashboard:
 
